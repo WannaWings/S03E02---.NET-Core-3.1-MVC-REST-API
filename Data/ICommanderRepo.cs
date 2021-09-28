@@ -8,7 +8,7 @@ namespace Commander.Data
         bool SaveChanges();
 
         IEnumerable<Command> GetAllCommands();
-        Command GetCommandById(int id);
+        Command GetCommandById(string id);
         void CreateCommand(Command cmd);
         void UpdateCommand(Command cmd);
         void DeleteCommand(Command cmd);

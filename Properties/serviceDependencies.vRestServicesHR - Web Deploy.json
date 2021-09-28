@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/metalloinvesthr/databases/CommanderDB",
+      "type": "mssql.azure",
+      "connectionId": "CommanderContext",
+      "secretStore": null
+    },
+    "mssql2": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/metalloinvesthr/databases/CommanderDB",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:CommanderConnection",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

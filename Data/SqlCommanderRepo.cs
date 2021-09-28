@@ -38,9 +38,9 @@ namespace Commander.Data
             return _context.Commands.ToList();
         }
 
-        public Command GetCommandById(int id)
+        public Command GetCommandById(string id)
         {
-            return _context.Commands.FirstOrDefault(p => p.Id == id);
+            return _context.Commands.FirstOrDefault(p => p.task_id == id);
         }
 
         public bool SaveChanges()

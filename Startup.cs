@@ -15,7 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using Microsoft.OpenApi.Models;
-
+using Microsoft.AspNetCore.Authentication;
 
 namespace Commander
 {
@@ -31,45 +31,54 @@ namespace Commander
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            
+            // configure basic authentication 
+            // services.AddAuthentication("BasicAuthentication")
+            //     .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+            //
+            // // configure DI for application services
+            // services.AddScoped<IUserService, UserService>();
+            
             services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer
                 (Configuration.GetConnectionString("CommanderConnection")));
+            
 
             services.AddControllers().AddNewtonsoftJson(s => {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
+
             
+
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<ICommanderRepo, SqlCommanderRepo>();
 
-            //ADDED AFTER TUTORIAL
-            services.AddSwaggerGen(c=> {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Commander API", Version = "v1" });
-            });
+     
+            
 
         }
-
-
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //ADDED AFTER TUTORIAL
-            app.UseSwagger();
+            
+            /*app.UseSwagger();
 
-            //ADDED AFTER TUTORIAL
+            
             app.UseSwaggerUI( c=> {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Commander API V1");
-            });
+            });*/
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
-            app.UseAuthorization();
+            
+           app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
