@@ -92,6 +92,10 @@ namespace Commander.Controllers
             {
                 commandCreateDto.result = commandCreateDto.result + " " + commandRoot.tasks.payload.response;
             }
+            if (commandRoot.tasks.payload.text != null)
+            {
+                commandCreateDto.result = commandCreateDto.result + " " + commandRoot.tasks.payload.text;
+            }
 
             if (commandRoot.tasks.payload.url != null)
             {

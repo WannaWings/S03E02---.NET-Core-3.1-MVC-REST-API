@@ -47,6 +47,8 @@ namespace Commander.Dtos
         [NotMapped]
         public string locations { get; set; }
         [NotMapped]
+        public string text { get; set; }
+        [NotMapped]
         public string response { get; set; }
         [NotMapped]
         public string phone { get; set; }

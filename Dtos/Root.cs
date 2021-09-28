@@ -30,6 +30,7 @@ namespace Commander.Dtos
         public List<Location> locations  { get; set; }
         public List<Requests> requests  { get; set; }
         public string response { get; set; }
+        public string text { get; set; }
         public string phone { get; set; }
         public string error_code { get; set; }
         public string error_text { get; set; }
